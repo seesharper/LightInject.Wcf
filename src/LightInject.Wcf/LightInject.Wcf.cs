@@ -21,7 +21,7 @@
     OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
     SOFTWARE.
 ******************************************************************************
-   LightInject.Wcf version 1.0.0.1 
+   LightInject.Wcf version 1.1.0 
    http://www.lightinject.net/
    http://twitter.com/bernhardrichter
 ******************************************************************************/
