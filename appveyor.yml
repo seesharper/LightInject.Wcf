@@ -15,6 +15,6 @@ deploy:
   api_key:
     secure: ynFcRQX0oim3DdR5Y8s4BtynS/NYRG059GvWGckqhpZGNZVvhvvn5UUWgsyPKLKm
   skip_symbols: false  
-  artifact: NuGetPackages/*.nupkg
+  artifact: /.*\.nupkg/
   on:
     appveyor_repo_tag: false
