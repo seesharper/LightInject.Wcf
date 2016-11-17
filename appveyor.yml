@@ -9,7 +9,7 @@ build_script:
 test: off
 artifacts:
 - path: build/tmp/*.nupkg
-  name: NuGet Packages
+  name: NuGetPackages
 deploy:
   provider: NuGet
   server:                  # remove to push to NuGet.org
@@ -17,6 +17,6 @@ deploy:
     secure: ynFcRQX0oim3DdR5Y8s4BtynS/NYRG059GvWGckqhpZGNZVvhvvn5UUWgsyPKLKm
   skip_symbols: false
   symbol_server:           # remove to push symbols to SymbolSource.org
-  artifact: NuGet Packages
+  artifact: build/tmp/*.nupkg
   on:
-    appveyor_repo_tag: true
+    appveyor_repo_tag: false
