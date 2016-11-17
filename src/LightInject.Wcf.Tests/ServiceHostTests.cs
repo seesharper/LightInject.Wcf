@@ -38,5 +38,19 @@ namespace LightInject.Wcf.Tests
                 Assert.Equal(2, serviceHost.Description.Endpoints.Count);
             }                        
         }
+
+        [Fact]
+        public void CreateServiceHost_UsingConstructorString_CreatesHost()
+        {
+            var container = new ServiceContainer();
+            container.Register<IService, Service>("MyService");
+            container.EnableWcf();
+            var serviceHostFactory = new LightInjectServiceHostFactory();
+
+            var serviceHost = serviceHostFactory.CreateServiceHost("MyService", new Uri[] { new Uri("http://localhost:6000/" + "MyService" + ".svc"),  });
+
+            Assert.True(typeof(IProxy).IsAssignableFrom(serviceHost.Description.ServiceType));
+
+        }
     }       
 }

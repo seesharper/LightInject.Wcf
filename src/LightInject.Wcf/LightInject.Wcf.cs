@@ -21,7 +21,7 @@
     OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
     SOFTWARE.
 ******************************************************************************
-   LightInject.Wcf version 1.0.0.1 
+   LightInject.Wcf version 1.1.0
    http://www.lightinject.net/
    http://twitter.com/bernhardrichter
 ******************************************************************************/
@@ -253,7 +253,10 @@ namespace LightInject.Wcf
             {
                 foreach (var endpointBehavior in endpointBehaviors)
                 {
-                    endpoint.Behaviors.Add(endpointBehavior);
+                    if (!endpoint.Behaviors.Contains(endpointBehavior.GetType()))
+                    {
+                        endpoint.Behaviors.Add(endpointBehavior);
+                    }                    
                 }
             }
         }
@@ -264,7 +267,10 @@ namespace LightInject.Wcf
             var description = serviceHost.Description;
             foreach (var serviceBehavior in serviceBehaviors)
             {
-                description.Behaviors.Add(serviceBehavior);
+                if (!description.Behaviors.Contains(serviceBehavior.GetType()))
+                {
+                    description.Behaviors.Add(serviceBehavior);
+                }                
             }
         }
 

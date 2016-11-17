@@ -23,19 +23,16 @@ Execute(() => InternalizeSourceVersions(), "Internalizing source versions");
 Execute(() => RestoreNuGetPackages(), "NuGet");
 Execute(() => BuildAllFrameworks(), "Building all frameworks");
 Execute(() => RunAllUnitTests(), "Running unit tests");
-Execute(() => AnalyzeTestCoverage(), "Analyzing test coverage");
+//Execute(() => AnalyzeTestCoverage(), "Analyzing test coverage");
 Execute(() => CreateNugetPackages(), "Creating NuGet packages");
 
 private void CreateNugetPackages()
 {
 	string pathToNuGetBuildDirectory = Path.Combine(pathToBuildDirectory, "NuGetPackages");
 	DirectoryUtils.Delete(pathToNuGetBuildDirectory);
-	
-		
-	Execute(() => CopySourceFilesToNuGetLibDirectory(), "Copy source files to NuGet lib directory");		
+						
 	Execute(() => CopyBinaryFilesToNuGetLibDirectory(), "Copy binary files to NuGet lib directory");
-	
-	Execute(() => CreateSourcePackage(), "Creating source package");		
+				
 	Execute(() => CreateBinaryPackage(), "Creating binary package");
     string myDocumentsFolder = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
     RoboCopy(pathToBuildDirectory, myDocumentsFolder, "*.nupkg");		
