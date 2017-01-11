@@ -1,4 +1,7 @@
 # WCF #
+[![AppVeyor](https://img.shields.io/appveyor/ci/gruntjs/grunt.svg?maxAge=2592000)](https://ci.appveyor.com/project/seesharper/lightinject-wcf)
+[![NuGet](https://img.shields.io/nuget/v/LightInject.Wcf.svg?maxAge=2592000)]()
+[![GitHub tag](https://img.shields.io/github/tag/seesharper/LightInject.Wcf.svg?maxAge=2592000)]()
 
 **LightInject.Wcf** provides an integration that enables dependency injection in WCF applications. 
 
