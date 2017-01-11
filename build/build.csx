@@ -331,7 +331,8 @@ private void SetHintPath(string frameworkMoniker, string pathToProjectFile)
 	{
 		frameworkMoniker = "portable-net45+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10";
 	}
-	ReplaceInFile(@"(.*\\packages\\LightInject.*\\lib\\).*(\\.*)","$1"+ frameworkMoniker + "$2", pathToProjectFile);	
+	// Note only update hintpath for LightInject. LightInject.Interception is netstandard1.1
+	ReplaceInFile(@"(.*\\packages\\LightInject\.\d.*\\lib\\).*(\\.*)","$1"+ frameworkMoniker + "$2", pathToProjectFile);	
 }
 
 private void SetTargetFrameworkProfile()
