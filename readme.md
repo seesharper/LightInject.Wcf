@@ -19,6 +19,8 @@ This adds a reference to the **LightInject.Wcf.dll** in the target project.
 
 **LightInject.Wcf** aims to provide a zero config approach to developing **WCF** services in addition to support both constructor and property injection for **WCF** service implementations. 
 
+> Note: If a Web site is precompiled for deployment, content provided by a [VirtualPathProvider](https://msdn.microsoft.com/en-us/library/system.web.hosting.virtualpathprovider(v=vs.110).aspx) instance is not compiled, and no VirtualPathProviderinstances are used by the precompiled site.
+
 The easiest way to create a new WCF application is to start with a new empty web application and then install the **LightInject.Wcf** package.
 
 Our first service might look something like this:
@@ -29,7 +31,7 @@ Our first service might look something like this:
         [OperationContract]
         int GetValue(int value);
     }
-
+    
     public class Service : IService
     {
         public int GetValue(int value)
@@ -66,7 +68,7 @@ If we want to identify our service by something else than the full type name of 
             serviceRegistry.Register<IService, Service>("MyService");
         }
     }
- 
+
 Now we need one additional class to bootstrap the container so that the service is registered with the correct name before the service is invoked.
 
 	[assembly: System.Web.PreApplicationStartMethod(typeof(SampleWcfApplication.Startup), "Initialize")]
@@ -97,7 +99,7 @@ While it still is possible to configure endpoint and service behaviors using XML
         public void Validate(ServiceDescription serviceDescription, ServiceHostBase serviceHostBase)
         {            
         }
-
+    
         public void AddBindingParameters(
             ServiceDescription serviceDescription,
             ServiceHostBase serviceHostBase,
@@ -105,26 +107,26 @@ While it still is possible to configure endpoint and service behaviors using XML
             BindingParameterCollection bindingParameters)
         {            
         }
-
+    
         public void ApplyDispatchBehavior(ServiceDescription serviceDescription, ServiceHostBase serviceHostBase)
         {           
         }
     }
-
-	public class SampleEndpointBehavior : IEndpointBehavior
+    
+    public class SampleEndpointBehavior : IEndpointBehavior
     {
         public void Validate(ServiceEndpoint endpoint)
         {            
         }
-
+    
         public void AddBindingParameters(ServiceEndpoint endpoint, BindingParameterCollection bindingParameters)
         {
         }
-
+    
         public void ApplyDispatchBehavior(ServiceEndpoint endpoint, EndpointDispatcher endpointDispatcher)
         {
         }
-
+    
         public void ApplyClientBehavior(ServiceEndpoint endpoint, ClientRuntime clientRuntime)
         {
         }
