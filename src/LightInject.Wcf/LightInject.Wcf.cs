@@ -1,4 +1,4 @@
-﻿/*********************************************************************************   
+﻿/*********************************************************************************
     The MIT License (MIT)
 
     Copyright (c) 2017 bernhard.richter@gmail.com
@@ -35,7 +35,7 @@
 
 namespace LightInject
 {
-    using System;    
+    using System;
     using System.ServiceModel;
     using LightInject;
     using LightInject.Wcf;
@@ -43,12 +43,12 @@ namespace LightInject
     /// <summary>
     /// Extends the <see cref="IServiceContainer"/> interface with a method
     /// to enable services that are scoped per <see cref="OperationContext"/>.
-    /// </summary>    
+    /// </summary>
     public static class WcfContainerExtensions
     {
         /// <summary>
-        /// Ensures that services registered with the <see cref="PerScopeLifetime"/> or <see cref="PerRequestLifeTime"/> 
-        /// is properly disposed at the end of an <see cref="OperationContext"/>.        
+        /// Ensures that services registered with the <see cref="PerScopeLifetime"/> or <see cref="PerRequestLifeTime"/>
+        /// is properly disposed at the end of an <see cref="OperationContext"/>.
         /// </summary>
         /// <param name="serviceContainer">The target <see cref="IServiceContainer"/>.</param>
         public static void EnableWcf(this IServiceContainer serviceContainer)
@@ -78,7 +78,7 @@ namespace LightInject
 namespace LightInject.Wcf
 {
     using System;
-    using System.Collections.Generic;    
+    using System.Collections.Generic;
     using System.IO;
     using System.Linq;
     using System.ServiceModel;
@@ -111,13 +111,13 @@ namespace LightInject.Wcf
     }
 
     /// <summary>
-    /// A subclass of the <see cref="ServiceHost"/> class that allows 
+    /// A subclass of the <see cref="ServiceHost"/> class that allows
     /// xml configuration to be applied.
     /// </summary>
     public class LightInjectServiceHost : ServiceHost
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="LightInjectServiceHost"/> class with the type of service and its base addresses specified. 
+        /// Initializes a new instance of the <see cref="LightInjectServiceHost"/> class with the type of service and its base addresses specified.
         /// </summary>
         /// <param name="serviceType">The type of hosted service.</param>
         /// <param name="baseAddresses">An array of type <see cref="Uri"/> that contains the base addresses for the hosted service.</param>
@@ -138,13 +138,13 @@ namespace LightInject.Wcf
     /// <summary>
     /// A <see cref="ServiceHostFactory"/> that uses the LightInject <see cref="ServiceContainer"/>
     /// to create WCF services.
-    /// </summary>    
+    /// </summary>
     public class LightInjectServiceHostFactory : ServiceHostFactory
     {
         private static IServiceContainer container;
 
         /// <summary>
-        /// Sets the <see cref="IServiceContainer"/> instance that is 
+        /// Sets the <see cref="IServiceContainer"/> instance that is
         /// used to resolve services.
         /// </summary>
         public static IServiceContainer Container
@@ -188,7 +188,7 @@ namespace LightInject.Wcf
         }
 
         /// <summary>
-        /// Creates a <see cref="T:System.ServiceModel.ServiceHost"/> for a specified type of service with a specific base address. 
+        /// Creates a <see cref="T:System.ServiceModel.ServiceHost"/> for a specified type of service with a specific base address.
         /// </summary>
         /// <returns>
         /// A <see cref="T:System.ServiceModel.ServiceHost"/> for the type of service specified with a specific base address.
@@ -256,7 +256,7 @@ namespace LightInject.Wcf
                     if (!endpoint.Behaviors.Contains(endpointBehavior.GetType()))
                     {
                         endpoint.Behaviors.Add(endpointBehavior);
-                    }                    
+                    }
                 }
             }
         }
@@ -270,7 +270,7 @@ namespace LightInject.Wcf
                 if (!description.Behaviors.Contains(serviceBehavior.GetType()))
                 {
                     description.Behaviors.Add(serviceBehavior);
-                }                
+                }
             }
         }
 
@@ -325,9 +325,9 @@ namespace LightInject.Wcf
     }
 
     /// <summary>
-    /// An <see cref="IInterceptor"/> that ensures that a service operation is 
-    /// executed within a <see cref="Scope"/>.    
-    /// </summary>    
+    /// An <see cref="IInterceptor"/> that ensures that a service operation is
+    /// executed within a <see cref="Scope"/>.
+    /// </summary>
     public class ServiceInterceptor : IInterceptor
     {
         private readonly IServiceContainer serviceContainer;
@@ -344,7 +344,7 @@ namespace LightInject.Wcf
         /// <summary>
         /// Wraps the execution of a service operation inside a <see cref="Scope"/>.
         /// </summary>
-        /// <param name="invocationInfo">The <see cref="IInvocationInfo"/> instance that 
+        /// <param name="invocationInfo">The <see cref="IInvocationInfo"/> instance that
         /// contains information about the current method call.</param>
         /// <returns>The return value from the method.</returns>
         public object Invoke(IInvocationInfo invocationInfo)
@@ -357,8 +357,8 @@ namespace LightInject.Wcf
     }
 
     /// <summary>
-    /// Represents a virtual .svc file. 
-    /// </summary>    
+    /// Represents a virtual .svc file.
+    /// </summary>
     public class VirtualSvcFile : VirtualFile
     {
         private readonly string content;
@@ -393,7 +393,7 @@ namespace LightInject.Wcf
 
     /// <summary>
     /// A <see cref="VirtualPathProvider"/> that enables WCF services to be hosted without creating .svc files.
-    /// </summary>    
+    /// </summary>
     public class VirtualSvcPathProvider : VirtualPathProvider
     {
         private const string FileTemplate =
