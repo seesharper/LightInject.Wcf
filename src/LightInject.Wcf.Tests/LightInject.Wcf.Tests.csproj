@@ -2,7 +2,7 @@
   <Import Project="../mono.props" />
 
   <PropertyGroup>
-    <TargetFramework>net471</TargetFramework>
+    <TargetFramework>net472</TargetFramework>
     <IsPackable>false</IsPackable>
   </PropertyGroup>
 
@@ -26,10 +26,5 @@
 
   <ItemGroup>
     <ProjectReference Include="..\LightInject.Wcf\LightInject.Wcf.csproj" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="xunit.runner.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
   </ItemGroup>
 </Project>

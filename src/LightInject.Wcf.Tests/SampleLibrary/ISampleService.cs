@@ -162,6 +162,8 @@
 
         public async Task<IFoo> Execute()
         {
+            var test = OperationContext.Current;
+            
             await Task.Delay(10);
 
             return fooFactory(); //<--This code is executed on another thread.                                     

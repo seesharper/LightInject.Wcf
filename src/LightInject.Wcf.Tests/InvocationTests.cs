@@ -53,10 +53,12 @@ namespace LightInject.Wcf.Tests
         [Fact]
         public void Invoke_PerCallInstanceSingleConcurrency_CanHandleMultipleThreads()
         {
+            Foo.InitializeCount = 0;
             using (StartService<IPerCallInstanceAndSingleConcurrency>())
             {
                 ParallelInvoker.Invoke(50, () => Invoke<IPerCallInstanceAndSingleConcurrency, int>( c=> c.Execute()));
             }
+            Assert.True(Foo.InitializeCount == 50);
         }
 
         [Fact]
